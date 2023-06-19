@@ -1,0 +1,53 @@
+﻿﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productwebapi-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: productwebapi
+  template:
+    metadata:
+      labels:
+        app: productwebapi
+    spec:
+      containers:
+        - name: productwebapi
+          image: gurmeetnagpdocker/productapi:1
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: mongo-config
+          env:
+            - name: ConnectionString
+              valueFrom:
+                  configMapKeyRef:
+                    name: mongo-config
+                    key: ConnectionString
+            - name: username
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: username
+            - name: password
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: password
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: productwebapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: productwebapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
