@@ -5,5 +5,5 @@ ProductAPI Code Repository : [https://github.com/KanveerSingh/ProductAPI/tree/ma
 
 Docker hub URL for docker images(productapi) : [https://hub.docker.com/r/gurmeetnagpdocker/productapi]
 
-URL for Service API tier to view the records from backend tier - []
+URL for Service API tier to view the records from backend tier - [http://34.132.255.35/product]
 

@@ -15,6 +15,7 @@ spec:
       containers:
         - name: productwebapi
           image: gurmeetnagpdocker/productapi:1
+          imagePullPolicy: "Always"
           ports:
             - containerPort: 80
           envFrom:

@@ -36,11 +36,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: mongo-config
-
-  volumes:
-    - name: mongo-persistent-storage
-      persistentVolumeClaim:
-        claimName: mongo-pvc
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
 
 ---
 

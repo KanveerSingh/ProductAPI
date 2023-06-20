@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 IConfiguration _configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.development.json")
+    .AddJsonFile("appsettings.json")
     .AddEnvironmentVariables()
     .AddCommandLine(args)
     .AddUserSecrets<Program>(true)
